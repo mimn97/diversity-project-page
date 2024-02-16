@@ -455,22 +455,24 @@
                 <div class="container">
                   <div id="carousel2" class="carousel results-carousel">
                     <div class="item">
-                      <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p>
+                      <!-- <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p> -->
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/table3_criteria.png" style="max-height: 260px" />
+                        <img src="website/static/images/fig4_recall.png" style="max-height: 350px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
-                                        In LLM <b>simulations</b> (i.e. conversations between two LLM agents), one of the most common errors is role flipping, or the agents swapping their assigned roles. This happens most frequently when the agent becomes confused, indicating that the simulation breaks down when an agent does not understand how to respond.
+                        X-axis is the number of generated opinions for our diversity coverage experiment and Y-axis is the average number of unique criteria clusters for all statements.
+                         Moral Stories do not have stances, so the line is only for all generated continued stories. 
+
                                       </p>
                     </div>
 
                     <div class="item">
-                      <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.1</p>
+                      <!-- <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.1</p> -->
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/fig4_recall.png" style="max-height: 260px" />
+                        <img src="website/static/images/table3_criteria.png" style="max-height: 350px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
-                                        In <b>instruction</b> writing, LLMs may provide incorrect outputs for a written instruction rather than an output that indicates uncertainty or lack of knowledge of the answer. In downstream training, these incorrect outputs result in more hallucinations produced by instruction-tuned models.</i>
+                        Different numbers of LLMs' generated unique criteria clusters for different task types. Max and median refer to the maximum and the median of the number of unique criteria clusters.
                                       </p>
                     </div>
                   </div>
@@ -478,65 +480,58 @@
               </div>
               <li>
                 <p class="subtitle">
-                  LLMs are deficient in accurately mirroring human behavior for
-                  particular tasks.
+                  Semantic diversity is not always positively correlated with perspective diversity.
                 </p>
               </li>
               <div class="hero-body">
                 <div class="container">
-                  <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p>
-                  <div style="display: flex; justify-content: center">
-                    <img src="website/static/images/19.png" style="max-height: 260px" />
+                  <div class="item">
+                    <br>
+                    <img src="website/static/images/fig5_corr.png" alt="cobbler pipeline"/>
+                    <!-- <p class="subtitle has-text-centered">
+                      First image description.
+                    </p> -->
                   </div>
-                  <p class="subtitle is-6 has-text-centered">
-                              In <b>simulations</b>, where LLM agents engage in conversations focused on problem-solving, these agents often stray from the main topic, negatively impacting task performance. This contrasts with human digressions, facilitating team building and contributing to more effective problem resolution.
-                            </p>
-                </div>
+                  <div class="content has-text-justified">
+                    <br>
+                    <p>Scatter plot for X= semantic diversity (cosine distance) of opinions in each statement, Y = perspective diversity (% of statements without duplicate opinions). 
+                      A green circle refers to one statement with agree/hate speech reasons while a red triangle refers to statements with disagree/not hate opinions. 
+                      Story continuation in Moral Stories does not have stances and each story is represented by a purple circle.
+                    </p>
+                  </div>
               </div>
+              </div>
+              <br>
               <li>
                 <p class="subtitle">
-                  Models trained on LLM data containing the above issues have degraded
-                  performance.
+                  Humans and LLMs have different perspectives on socially argumentative topics. 
                 </p>
               </li>
               <div class="hero-body">
                 <div class="container">
-                  <div id="carousel3" class="carousel results-carousel">
+                  <div id="carousel2" class="carousel results-carousel">
                     <div class="item">
-                      <p class="subtitle has-text-centered"><b>Free-Form Text</b> - section 9.2</p>
+                      <!-- <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p> -->
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/8.png" style="max-height: 260px" />
+                        <img src="website/static/images/human_llm_qual.png" style="max-height: 350px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
-                                        We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
+                        Opinions generated by GPT-4 (top) and a human (bottom) about a statement from Social-Chem-101.
+
                                       </p>
                     </div>
+
                     <div class="item">
-                      <p class="subtitle has-text-centered"><b>Task Labels</b> - section 5.2</p>
+                      <!-- <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.1</p> -->
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/12.jpg" style="max-height: 260px" />
+                        <img src="website/static/images/table4_human.png" style="max-height: 260px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
-                                      We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
-                                    </p>
+                        Average number of criteria clusters of human opinions vs. GPT-4-generated opinions per statement with standard deviation. 
+                        <b>Humans generated slightly more diverse opinions than LLMs.</b>
+                                      </p>
                     </div>
-                    <div class="item">
-                      <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.2</p>
-                      <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/14.png" style="max-height: 260px" />
-                      </div>
-                      <p class="subtitle is-6 has-text-centered">
-                                      We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
-                                    </p>
-                    </div>
-                    <div class="item">
-                      <p class="subtitle has-text-centered"><b>Preferences</b> - section 6.2</p>
-                      <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/16.png" style="max-height: 260px" />
-                      </div>
-                      <p class="subtitle is-6 has-text-centered">
-                                    We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
-                                  </p>
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -549,7 +544,7 @@
     <!-- Takeaway end -->
 
     <!-- Limitations start -->
-    <section class="section hero is-small is-light">
+    <!-- <section class="section hero is-small">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full">
@@ -561,16 +556,16 @@
               </div>
             </div>
           </div>
-    </section>
+    </section> -->
     <!-- Limitations end -->
 
     <!--BibTex citation start-->
-    <section class="section" id="BibTeX">
+    <!-- <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
         <pre><code>PENDING</code></pre>
       </div>
-    </section>
+    </section> -->
     <!--BibTex citation end-->
 
     <footer class="footer">
