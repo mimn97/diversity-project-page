@@ -316,20 +316,59 @@
                 <ol>
                   <li> 
                     <b style="color: slateblue">Criteria-based Diversity Prompting </b> 
-                    <p> We collect a set of 50 question-answering instructions from BigBench (Srivastava et al., 2023) and Eli5 (Fan et al., 2019). </p> 
-                    <p>Then, we assemble top 15 models that are open- and closed-source LLMs 
-                      (GPT-4, ChatGPT, InstructGPT, LLaMAv2, LLaMA, Cohere, Falcon, Alpaca, Vicuna, OpenAssist, DollyV2, Baize, Koala, WizardLM, MPT, RedPajama).</p>
-                  </li>
-                  <br>
-                  <li>
-                    <b style="color: slateblue">Response Generation </b>
-                    <p>We then generate responses from 15 open- and closed-source LLMs and conduct a round-robin over every possible unique pair between each of the model responses, prompting each model to evaluate its own and other models’ responses.</p>
-                  </li>
-                  <br>
-                  <li>
-                    <b style="color: slateblue">Pairwise Evaluation</b>
+                    <p> 
+                      Our Criteria-based Diversity Prompting is as follows (shown in Figure <b>[a]</b>):
+                      <br>
+                      "Given a <i>statement</i>, we prompt the LLMs to generate its <b style = "color:magenta">stance (e.g., agree or disagree)</b> and explain its <b style="color:purple">Reasons</b> with a list of <b style="color:blue">Criteria</b> that affect its perspective. ""
+                    
+                    <br>
+                      <br>
+                      Here, we consider <b style="color:blue">criteria</b> words or phrases that frame the LLM's high-level decision and generate the grounded reasons well (e.g., model values).
+                    </p> 
                     <p>
-                      We then test six different biases to benchmark their evaluation quality and categorize the model biases into two groups: (1) Implicit Biases, which can be implicitly extracted from each model’s evaluation via a vanilla prompt, and (2) Induced Biases, which add modifications to the original prompts akin to induce negative behaviors. 
+                      
+                    </p>
+                  </li>
+                  <br>
+                  
+                  <li>
+                    <b style="color: slateblue">Step-by-Step Recall Prompting</b>
+                    <p>
+                      To see the LLMs' diversity coverage, we suggest a step-by-step recall prompting  (as shown in Figure <b>[b]</b> ): 
+                      <br>
+                      We first ask LLMs to generate one opinion ('1st Opinion') for the given statement, and we ask the models to continue generating more opinions until the requested number of opinions ('N') is reached. 
+                    </p>
+                    <p> Note that the first opinion is used to guide the structured format for the output since we do not do few-shot prompting for this experiment. </p>
+                    </li>
+                    <br>
+                    <li> 
+                      <b style="color: slateblue">Dataset & Models</b> 
+                      <p> 
+                        We collected the following datasets: (1) Social-Chem-101 (Forbes et al., 2020); (2) Change My View (CMV) (Hidey et al., 2017). 
+                        For the recall prompting technique, we added the two more datasets: (3) Hate Speech (Vidgen et al., 2021); and (4) Moral Stories (Emelin et al., 2021). 
+                      </p> 
+                      <p>
+                        Then, we assemble GPT-4, ChatGPT, and GPT-3 (text-davinci-002) as well as open-source models such as LLaMA2-70B-chat (Touvron et al., 2023) and Mistral-7B-Instruct (Jiang et al., 2023).
+                      </p>
+                    </li>
+                    <br>
+                    <li>
+                    <b style="color: slateblue">Evaluation</b>
+                    <p>
+                      We measured the diversity in LLM-generated opinions by using the following two metrics: 
+                      <ol>
+                        <li>
+                          <b>Semantic Diversity</b>: For each statement, we first model the generated reasons from LLMs as sentence embeddings using SentenceBERT. 
+                          We then measure the cosine distance among every pair of reasons and compute the average cosine distance across all the pairs. Note that we used this metric to compare the diversity of models' generated reasons 
+                          between criteria-based prompting and free-form prompting. 
+                        </li>
+                        <br>
+                        <li>
+                          <b>Perspective Diversity</b>: We prompt GPT-4 to cluster criteria words with similar meaning into one group, in order to examine the step-by-step recall prompting. 
+                          A perspective diversity score for a statement is the percentage of how many generated opinions of the statement have each of their criteria not duplicated with each other. 
+                          The higher the score is, the more diverse the set of generated opinions is. 
+                        </li>
+                      </ol>
                     </p>
                   </li>
                 </ol>
@@ -347,20 +386,33 @@
     <!-- Takeaway start -->
     <span id="takeaway">
       <!-- The content in this section will be replaced with the content in takeaway-mobile.html if the browser's width is less than 1024px. -->
-      <section class="section hero is-small">
+      <section class="section hero is-small is-light">
         <div class="container is-max-desktop">
           <div class="content">
-            <h2 class="title is-3">Key Takeaways</h2>
+            <h2 class="title is-3 has-text-centered">Key Takeaways</h2>
             <ul>
               <li>
                 <p class="subtitle">
-                  LLMs demonstrate a subpar understanding of complex human opinions
-                  and interactions.
+                  GPT-4 with the criteria-based diversity prompting in an one-shot setting shows the most semantically diverse opinions about social norms and argumentative topics.
                 </p>
               </li>
               <div class="hero-body">
                 <div class="container">
-                  <div id="carousel1" class="carousel results-carousel">
+                  <div class="item">
+                    <br>
+                    <img src="website/static/images/table1_semantic.png" alt="cobbler pipeline"/>
+                    <!-- <p class="subtitle has-text-centered">
+                      First image description.
+                    </p> -->
+                  </div>
+                  <div class="content has-text-justified">
+                    <br>
+                    <p>Semantic diversity (cosine distance) results for criteria-based prompting vs. free-form prompting and LLM variants. 
+                      1-criteria refers to one-shot criteria-based prompting and so on. 
+                      Text for the highest diversity score within the same LLM type is made \textbf{bold}. * p< 0.05 when comparing criteria-based prompting with free-form prompting. 
+                    </p>
+                  </div>
+                  <!-- <div id="carousel1" class="carousel results-carousel">
                     <div class="item">
                       <p class="subtitle has-text-centered"><b>Task Labels</b> - section 5.1</p>
                       <div style="display: flex; justify-content: center">
@@ -390,13 +442,13 @@
                                               For elicitation of <b>preferences</b>, we find that LLM preferences are tightly coupled with standalone lexical cues, whereas human preferences appear to take a more holistic approach.
                                             </p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
+              <br>
               <li>
                 <p class="subtitle">
-                  LLMs struggle to respond effectively when faced with unknown or
-                  unfamiliar situations.
+                  Task subjectivity of dataset tends to influence the capabilities of LLMs in producing the maximium number of diverse opinions. 
                 </p>
               </li>
               <div class="hero-body">
@@ -405,7 +457,7 @@
                     <div class="item">
                       <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p>
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/17.png" style="max-height: 260px" />
+                        <img src="website/static/images/table3_criteria.png" style="max-height: 260px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
                                         In LLM <b>simulations</b> (i.e. conversations between two LLM agents), one of the most common errors is role flipping, or the agents swapping their assigned roles. This happens most frequently when the agent becomes confused, indicating that the simulation breaks down when an agent does not understand how to respond.
@@ -415,7 +467,7 @@
                     <div class="item">
                       <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.1</p>
                       <div style="display: flex; justify-content: center">
-                        <img src="website/static/images/13.png" style="max-height: 260px" />
+                        <img src="website/static/images/fig4_recall.png" style="max-height: 260px" />
                       </div>
                       <p class="subtitle is-6 has-text-centered">
                                         In <b>instruction</b> writing, LLMs may provide incorrect outputs for a written instruction rather than an output that indicates uncertainty or lack of knowledge of the answer. In downstream training, these incorrect outputs result in more hallucinations produced by instruction-tuned models.</i>
