@@ -216,14 +216,17 @@
     </section>
 
 
-          <div class="container is-max-desktop">
-            <div class="columns is-centered">
-              <div class="image-container">
-                <img src="website/static/images/figure1_diversity_prompting.png" alt="Image 1">
-                <img src="website/static/images/figure2_our_task.png" alt="Image 2">
-              </div>
-            </div>
-          </div>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-6">
+            <img
+              src="website/static/images/figure1_diversity_prompting.png"
+              width="500"
+              class="center-image"
+            />
+        </div>
+      </div>
+    </div>
 
           <section class="section hero">
             <div class="container is-max-desktop">
@@ -266,7 +269,7 @@
     <!-- Research Contributions start -->
     <section class="section hero is-small is-light">
       <div class="container is-max-desktop">
-        <div class="columns is-centered">
+        <div class="columns is-centered has-text-centered">
           <div class="column is-full">
             <div class="content">
               <h2 class="title is-3">Research Contributions</h2>
@@ -286,6 +289,57 @@
           </div>
     </section>
     <!-- Research Contributions end -->
+
+    <!--- Methods Start -->
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="columns is-centered has-text-centered;">
+          <h1 class="title is-3">Our CoBBLEr Pipeline</h1>
+        </div> 
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <div class="item">
+                <br>
+                <img src="website/static/images/" alt="cobbler pipeline"/>
+                <!-- <p class="subtitle has-text-centered">
+                  First image description.
+                </p> -->
+              </div>
+              <div class="content has-text-justified">
+                <br>
+                <p>
+                We propose CoBBLEr, the <b>CO</b>gnitive <b>B</b>ias <b>B</b>enchmark for evaluating the quality and reliability of <b>L</b>LMs as <b>E</b>valuato<b>R</b>s. Here is the pipeline: 
+                <ol>
+                  <li> 
+                    <b style="color: slateblue">Dataset and Models </b> 
+                    <p> We collect a set of 50 question-answering instructions from BigBench (Srivastava et al., 2023) and Eli5 (Fan et al., 2019). </p> 
+                    <p>Then, we assemble top 15 models that are open- and closed-source LLMs 
+                      (GPT-4, ChatGPT, InstructGPT, LLaMAv2, LLaMA, Cohere, Falcon, Alpaca, Vicuna, OpenAssist, DollyV2, Baize, Koala, WizardLM, MPT, RedPajama).</p>
+                  </li>
+                  <br>
+                  <li>
+                    <b style="color: slateblue">Response Generation </b>
+                    <p>We then generate responses from 15 open- and closed-source LLMs and conduct a round-robin over every possible unique pair between each of the model responses, prompting each model to evaluate its own and other models’ responses.</p>
+                  </li>
+                  <br>
+                  <li>
+                    <b style="color: slateblue">Pairwise Evaluation</b>
+                    <p>
+                      We then test six different biases to benchmark their evaluation quality and categorize the model biases into two groups: (1) Implicit Biases, which can be implicitly extracted from each model’s evaluation via a vanilla prompt, and (2) Induced Biases, which add modifications to the original prompts akin to induce negative behaviors. 
+                    </p>
+                  </li>
+                </ol>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--- Methods end -->
+
+
 
     <!-- Takeaway start -->
     <span id="takeaway">
