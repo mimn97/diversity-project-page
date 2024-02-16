@@ -195,18 +195,18 @@
 
                   <!-- Huggingface data Link -->
 
-                  <!-- <span class="link-block">
+                  <span class="link-block">
                     <a
                       href="https://huggingface.co/datasets/minnesotanlp/LLM-Artifacts"
                       target="_blank"
                       class="external-link button is-normal is-rounded is-dark is-outlined"
                     >
                       <span class="icon">
-                        <img src="static/logos/hf-logo.svg" width="25" height="25"></img>
+                        <i class="fa fa-laptop"></i>
                       </span>
                       <span>Data</span>
                     </a>
-                  </span> -->
+                  </span>
                 </div>
               </div>
             </div>
@@ -487,37 +487,7 @@
         </div>
       </div>
     </footer>
-    
-    <script>
-      function loadHtmlWithScripts(targetElemId, filePath) {
-          return fetch(filePath)
-              .then((response) => response.text())
-              .then((data) => {
-                  const targetElem = document.getElementById(targetElemId);
-                  targetElem.innerHTML = data;
-
-                  const scripts = targetElem.querySelectorAll("script");
-                  scripts.forEach((script) => {
-                      const newScript = document.createElement("script");
-                      if (script.src) {
-                          newScript.src = script.src;
-                      } else {
-                          newScript.textContent = script.textContent;
-                      }
-                      document.body.appendChild(newScript);
-                      newScript.remove();
-                  });
-              });
-      }
-      function loadTakeaway() {
-          if (window.innerWidth < 1024) {
-              loadHtmlWithScripts('takeaway', 'takeaway-mobile.html');
-          }
-      }
-
-      // loadTakeaway();
-
-    </script>
+  
 
     <!-- Statcounter tracking code -->
 
